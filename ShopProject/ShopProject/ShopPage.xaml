@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopProject.ShopPage"
+             xmlns:converters ="clr-namespace:ShopProject.Converters; assembly=ShopProject">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StyleConvertersColor x:Key="StyleConvertersColor">
+
+            </converters:StyleConvertersColor>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ScrollView Orientation="Horizontal">
+            <StackLayout x:Name="FilterIem" Orientation="Horizontal" Spacing="60" BackgroundColor="#443e42" HeightRequest="60">
+
+                <Label Text="Travel" TextColor="Gray" VerticalOptions="Center"></Label>
+                <Label x:Name="ShoesLabel" Text="Shoes" TextColor="Gray" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="BagLabel" Text="Bags" TextColor="Gray" VerticalOptions="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="AccessoreisLabel" Text="Accessoreis" TextColor="Gray" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Shoes" TextColor="White" VerticalOptions="Center"></Label>
+                <Label Text="Shoes" TextColor="White" VerticalOptions="Center"></Label>
+                <Label Text="Shoes" TextColor="#7c767a" VerticalOptions="Center"></Label>
+                <Label Text="Shoes" TextColor="#7c767a" VerticalOptions="Center"></Label>
+                <Label Text="Shoes" TextColor="#7c767a" VerticalOptions="Center"></Label>
+
+
+        </StackLayout>
+        </ScrollView>
+      
+
+        <StackLayout Orientation="Vertical"   Margin="5"  BackgroundColor="White" HeightRequest="50">
+            <!--<Label Text="Search here"  TextColor="#44454a" FontSize="12"  Margin="5"></Label>-->
+            <SearchBar x:Name="SearchBar"  Placeholder="Search here" FontSize="12" TextColor="Black" HorizontalOptions="FillAndExpand"  TextChanged="SearchBar_OnTextChanged" />
+        </StackLayout>
+       
+            <Grid  Padding="2" BackgroundColor="White" VerticalOptions="FillAndExpand">
+                    <ListView x:Name="ProductsList"  SeparatorVisibility="None" HasUnevenRows="True" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                            <ViewCell >
+                                <Grid BackgroundColor="White">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="0"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame BindingContext="{Binding  Item1}" Padding="1" BackgroundColor="White" HasShadow="True" OutlineColor="Gray">
+
+
+                                    <Frame.GestureRecognizers>
+
+                                        <TapGestureRecognizer Tapped="FrameTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+
+                                    </Frame.GestureRecognizers>
+
+
+                                    <Grid BackgroundColor="White">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Vertical" BackgroundColor="White">
+                                                <!--<Frame BackgroundColor="White" Padding="5" HasShadow="False"-->
+                                                <Label Text="{Binding ShortDescription}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="MiddleTruncation"  TextColor="DarkGray" />
+                                                <Image Source="{Binding ImageURL}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80"/>
+                                            <!--/Frame>-->
+                                                    </StackLayout>
+
+                                            <StackLayout Grid.Row="1" Padding="5,0,5,5" Spacing="1" BackgroundColor="White">
+
+                                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12"  TextColor="Black"  LineBreakMode="NoWrap"/>
+                                            <Label Text="{Binding  Price}" FontSize="12" TextColor="Black" HorizontalOptions="Center"  VerticalOptions="Center"   />
+                                                <Grid BackgroundColor="White">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <!--<Button Grid.Column="1" Text="Detail" VerticalOptions="Center" BorderRadius="16" FontSize="10" HeightRequest="34" BorderWidth="0"/>-->
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+
+                                    <Frame Grid.Column="2" BindingContext="{Binding Item2}" Padding="1" BackgroundColor="White" HasShadow="True" OutlineColor="Gray">
+                                        <Frame.GestureRecognizers>
+
+                                            <TapGestureRecognizer Tapped="FrameTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+
+                                        </Frame.GestureRecognizers>
+                                    <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout Orientation="Vertical">
+                                            <!--<Frame BackgroundColor="White" >-->
+                                            <Label Text="{Binding ShortDescription}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"   TextColor="DarkGray"/>
+                                                <Image Source="{Binding ImageURL}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80"/>
+                                            <!--</Frame>-->
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Row="1" Padding="5,0,5,5" Spacing="1">
+
+                                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"   TextColor="Black"  />
+
+                                            <Label Text="{Binding Price}" FontSize="12" TextColor="Black" HorizontalOptions="Center"  VerticalOptions="Center" LineBreakMode="WordWrap"  />
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <!--<Button Grid.Column="1" Text="Detail" VerticalOptions="Center" BorderRadius="16" FontSize="10" HeightRequest="34" BorderWidth="0"/>-->
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="60" BackgroundColor="#443e42">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+                <Image Source="Home.png" Grid.Row="0" Grid.Column="0" WidthRequest="15" HeightRequest="15" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Search.png" Grid.Row="0" Grid.Column="1" WidthRequest="15" HeightRequest="15" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Menu.png" Grid.Row="0" Grid.Column="2" WidthRequest="15" HeightRequest="15" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Cart.png" Grid.Row="0" Grid.Column="3" WidthRequest="15" HeightRequest="15" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Account.png" Grid.Row="0" Grid.Column="4" WidthRequest="15" HeightRequest="15" HorizontalOptions="CenterAndExpand"></Image>
+            </Grid>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
